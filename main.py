@@ -1,4 +1,5 @@
 import numpy as np
+from scipy.optimize import minimize
 
 # Step 1: Linguistic scale mapped to Intuitionistic Fuzzy Numbers (μ, ν)
 linguistic_scale = {
@@ -9,11 +10,9 @@ linguistic_scale = {
     "Extreme importance": (0.9, 0.05)
 }
 
-# Step 2: Simulate 5 expert IFN matrices (size: 3x3 criteria)
+# Step 2: Simulate 5 expert IFN matrices (3x3)
 n_criteria = 3
 n_experts = 5
-
-# Random assignment from linguistic scale
 linguistic_values = list(linguistic_scale.values())
 expert_matrices = []
 
@@ -32,18 +31,18 @@ for i in range(n_experts):
 def ifwa_aggregation(expert_matrices):
     return np.mean(expert_matrices, axis=0)
 
-# Step 4: Score function S = μ - ν
+# Step 4: Score Function S = μ - ν
 def score_function(ifn_matrix):
     return ifn_matrix[:, :, 0] - ifn_matrix[:, :, 1]
 
-# Step 5: Normalize to get final weights
+# Step 5: Normalize Scores to get Weights
 def normalize_scores(S):
     col_sum = np.sum(S, axis=0)
     norm_matrix = S / col_sum
     weights = np.mean(norm_matrix, axis=1)
     return weights
 
-# Step 6: Consistency Check (basic)
+# Step 6: Consistency Check (approx.)
 def check_consistency(S):
     CI = np.max(np.abs(S - S.T))
     print(f"Consistency Index (approx): {CI:.4f}")
@@ -55,10 +54,46 @@ def check_consistency(S):
 # === Run IC-FAHP ===
 aggregated_ifn = ifwa_aggregation(np.array(expert_matrices))
 S = score_function(aggregated_ifn)
-weights = normalize_scores(S)
+initial_weights = normalize_scores(S)
 
-# === Output ===
-print("Aggregated IFN Matrix (μ, ν):\n", aggregated_ifn)
-print("\nScore Matrix (μ - ν):\n", S)
-print("\nNormalized Criteria Weights:\n", weights)
+print("\nInitial IC-FAHP Weights:\n", initial_weights)
 check_consistency(S)
+
+# === Step 7: Construct Best (A_B) and Worst (A_W) Vectors ===
+# Simulating expert input (normally you collect this)
+A_B = np.random.uniform(1, 9, size=n_criteria)  # Best to others
+A_W = np.random.uniform(1, 9, size=n_criteria)  # Others to Worst
+
+print("\nA_B vector (Best Comparisons):", A_B)
+print("A_W vector (Worst Comparisons):", A_W)
+
+# === Step 8: BBWM Optimization for Refined Weights ===
+def bbwm_objective(W):
+    W_B = max(W)  # assume best weight is highest
+    W_W = min(W)  # assume worst weight is lowest
+    diffs = [abs(W_B / W[i] - A_B[i]) for i in range(len(W))] + [abs(W[i] / W_W - A_W[i]) for i in range(len(W))]
+    return max(diffs)
+
+# Constraints: weights sum to 1 and all >= 0
+constraints = ({'type': 'eq', 'fun': lambda W: np.sum(W) - 1})
+bounds = [(0, 1) for _ in range(n_criteria)]
+
+# Initial guess: IC-FAHP weights
+result = minimize(bbwm_objective, initial_weights, method='SLSQP', bounds=bounds, constraints=constraints)
+
+refined_weights = result.x
+print("\nRefined Weights after BBWM Optimization:\n", refined_weights)
+
+# === Step 9: Monte Carlo Simulation for Robust Decision Weights ===
+def monte_carlo_refinement(A_B, A_W, n_simulations=10000):
+    samples = []
+    for _ in range(n_simulations):
+        noise = np.random.normal(0, 0.05, n_criteria)  # small noise to simulate Bayesian prior adjustment
+        sample_weight = np.clip(refined_weights + noise, 0, 1)
+        sample_weight /= np.sum(sample_weight)  # Normalize
+        samples.append(sample_weight)
+    samples = np.array(samples)
+    return np.mean(samples, axis=0)
+
+final_weights = monte_carlo_refinement(A_B, A_W)
+print("\nFinal Robust Weights after Monte Carlo Simulation:\n", final_weights)

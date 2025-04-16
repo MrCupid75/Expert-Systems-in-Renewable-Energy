@@ -1,0 +1,319 @@
+{
+  "title": "Expert Questionnaire: Renewable Energy Source & Hybrid Storage Selection",
+  "description": "This survey collects expert judgments to evaluate technical, environmental, economic, and social criteria for selecting the best renewable energy system and hybrid storage solution for a specific location.",
+  "items": [
+    {
+      "title": "Section 1: Expert Information",
+      "description": "Please fill in your personal and professional information.",
+      "questionItem": {
+        "question": {
+          "required": true,
+          "textQuestion": {},
+          "title": "Full Name"
+        }
+      }
+    },
+    {
+      "questionItem": {
+        "question": {
+          "required": true,
+          "textQuestion": {},
+          "title": "Organization"
+        }
+      }
+    },
+    {
+      "questionItem": {
+        "question": {
+          "required": true,
+          "textQuestion": {},
+          "title": "Role / Position"
+        }
+      }
+    },
+    {
+      "questionItem": {
+        "question": {
+          "required": true,
+          "textQuestion": {},
+          "title": "Years of Experience in Renewable Energy"
+        }
+      }
+    },
+    {
+      "title": "Section 2: Pairwise Comparisons",
+      "description": "Rate the importance of one criterion over the other for selecting the best renewable energy solution at your chosen location."
+    },
+    {
+      "questionItem": {
+        "question": {
+          "required": true,
+          "multipleChoiceQuestion": {
+            "options": [
+              {"value": "Technical"},
+              {"value": "Environmental"}
+            ],
+            "shuffle": false
+          },
+          "title": "Which is more important: Technical vs Environmental?"
+        }
+      }
+    },
+    {
+      "questionItem": {
+        "question": {
+          "required": true,
+          "scaleQuestion": {
+            "low": 1,
+            "high": 9,
+            "lowLabel": "Equal Importance",
+            "highLabel": "Extreme Importance"
+          },
+          "title": "Select the level of importance for your choice (Technical vs Environmental)."
+        }
+      }
+    },
+    {
+      "questionItem": {
+        "question": {
+          "required": true,
+          "multipleChoiceQuestion": {
+            "options": [
+              {"value": "Technical"},
+              {"value": "Economic"}
+            ],
+            "shuffle": false
+          },
+          "title": "Which is more important: Technical vs Economic?"
+        }
+      }
+    },
+    {
+      "questionItem": {
+        "question": {
+          "required": true,
+          "scaleQuestion": {
+            "low": 1,
+            "high": 9,
+            "lowLabel": "Equal Importance",
+            "highLabel": "Extreme Importance"
+          },
+          "title": "Select the level of importance for your choice (Technical vs Economic)."
+        }
+      }
+    },
+    {
+      "questionItem": {
+        "question": {
+          "required": true,
+          "multipleChoiceQuestion": {
+            "options": [
+              {"value": "Technical"},
+              {"value": "Social"}
+            ],
+            "shuffle": false
+          },
+          "title": "Which is more important: Technical vs Social?"
+        }
+      }
+    },
+    {
+      "questionItem": {
+        "question": {
+          "required": true,
+          "scaleQuestion": {
+            "low": 1,
+            "high": 9,
+            "lowLabel": "Equal Importance",
+            "highLabel": "Extreme Importance"
+          },
+          "title": "Select the level of importance for your choice (Technical vs Social)."
+        }
+      }
+    },
+    {
+      "questionItem": {
+        "question": {
+          "required": true,
+          "multipleChoiceQuestion": {
+            "options": [
+              {"value": "Environmental"},
+              {"value": "Economic"}
+            ],
+            "shuffle": false
+          },
+          "title": "Which is more important: Environmental vs Economic?"
+        }
+      }
+    },
+    {
+      "questionItem": {
+        "question": {
+          "required": true,
+          "scaleQuestion": {
+            "low": 1,
+            "high": 9,
+            "lowLabel": "Equal Importance",
+            "highLabel": "Extreme Importance"
+          },
+          "title": "Select the level of importance for your choice (Environmental vs Economic)."
+        }
+      }
+    },
+    {
+      "questionItem": {
+        "question": {
+          "required": true,
+          "multipleChoiceQuestion": {
+            "options": [
+              {"value": "Environmental"},
+              {"value": "Social"}
+            ],
+            "shuffle": false
+          },
+          "title": "Which is more important: Environmental vs Social?"
+        }
+      }
+    },
+    {
+      "questionItem": {
+        "question": {
+          "required": true,
+          "scaleQuestion": {
+            "low": 1,
+            "high": 9,
+            "lowLabel": "Equal Importance",
+            "highLabel": "Extreme Importance"
+          },
+          "title": "Select the level of importance for your choice (Environmental vs Social)."
+        }
+      }
+    },
+    {
+      "questionItem": {
+        "question": {
+          "required": true,
+          "multipleChoiceQuestion": {
+            "options": [
+              {"value": "Economic"},
+              {"value": "Social"}
+            ],
+            "shuffle": false
+          },
+          "title": "Which is more important: Economic vs Social?"
+        }
+      }
+    },
+    {
+      "questionItem": {
+        "question": {
+          "required": true,
+          "scaleQuestion": {
+            "low": 1,
+            "high": 9,
+            "lowLabel": "Equal Importance",
+            "highLabel": "Extreme Importance"
+          },
+          "title": "Select the level of importance for your choice (Economic vs Social)."
+        }
+      }
+    },
+    {
+      "title": "Section 3: Renewable System Evaluation",
+      "description": "Rate the suitability of each Renewable Energy + Hybrid Storage System for the target location."
+    },
+    {
+      "questionItem": {
+        "question": {
+          "required": true,
+          "scaleQuestion": {
+            "low": 1,
+            "high": 9,
+            "lowLabel": "Not Suitable",
+            "highLabel": "Highly Suitable"
+          },
+          "title": "Solar PV + Lithium-Ion Battery"
+        }
+      }
+    },
+    {
+      "questionItem": {
+        "question": {
+          "required": true,
+          "scaleQuestion": {
+            "low": 1,
+            "high": 9,
+            "lowLabel": "Not Suitable",
+            "highLabel": "Highly Suitable"
+          },
+          "title": "Solar PV + Hydrogen Storage"
+        }
+      }
+    },
+    {
+      "questionItem": {
+        "question": {
+          "required": true,
+          "scaleQuestion": {
+            "low": 1,
+            "high": 9,
+            "lowLabel": "Not Suitable",
+            "highLabel": "Highly Suitable"
+          },
+          "title": "Wind + Lithium-Ion Battery"
+        }
+      }
+    },
+    {
+      "questionItem": {
+        "question": {
+          "required": true,
+          "scaleQuestion": {
+            "low": 1,
+            "high": 9,
+            "lowLabel": "Not Suitable",
+            "highLabel": "Highly Suitable"
+          },
+          "title": "Wind + Pumped Hydro Storage"
+        }
+      }
+    },
+    {
+      "questionItem": {
+        "question": {
+          "required": true,
+          "scaleQuestion": {
+            "low": 1,
+            "high": 9,
+            "lowLabel": "Not Suitable",
+            "highLabel": "Highly Suitable"
+          },
+          "title": "Biomass + Thermal Storage"
+        }
+      }
+    },
+    {
+      "questionItem": {
+        "question": {
+          "required": true,
+          "scaleQuestion": {
+            "low": 1,
+            "high": 9,
+            "lowLabel": "Not Suitable",
+            "highLabel": "Highly Suitable"
+          },
+          "title": "Hybrid: Solar + Wind + Battery"
+        }
+      }
+    },
+    {
+      "questionItem": {
+        "question": {
+          "required": false,
+          "paragraphQuestion": {},
+          "title": "Any local factors or expert recommendations you'd like to add?"
+        }
+      }
+    }
+  ]
+}
